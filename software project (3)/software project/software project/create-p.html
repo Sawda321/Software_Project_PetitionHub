@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Petition | PetitionHub</title>
+    <link rel="stylesheet" href="css/create-p.css">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; padding: 0; }
+    .container { width: 90%; max-width: 500px; margin: 50px auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    h2 { text-align: center; margin-bottom: 20px; }
+    label { display: block; margin: 10px 0 5px; }
+    input, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+    button { background: #0066cc; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; margin-top: 15px; width: 100%; }
+    button:hover { background: #004d99; }
+    a { display: block; text-align: center; margin-top: 15px; text-decoration: none; color: #333; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create a New Petition</h2>
+    <form id="petitionForm">
+      <label for="title">Petition Title</label>
+      <input type="text" id="title" placeholder="Enter petition title" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="4" placeholder="Explain your petition" required></textarea>
+
+      <label for="category">Category</label>
+      <input type="text" id="category" placeholder="Environment, Education, etc." required>
+
+      <button type="submit">Submit Petition</button>
+    </form>
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <script>
+    document.getElementById("petitionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Petition submitted successfully! Pending admin approval.");
+      window.location.href = "pending.html";
+    });
+  </script>
+  <script src="firebase.js"></script>
+</body>
+</html>

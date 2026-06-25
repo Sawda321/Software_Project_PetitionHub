@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trending Petitions | PetitionHub</title>
+  <link rel="stylesheet" href="css/trending.css">
+  <style>
+    /* Your updated CSS */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #2c3e50, #4ca1af);
+      color: #fff;
+      margin: 0;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .petition-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px;
+    }
+
+    .petition-card {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      animation: fadeInCard 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .petition-card.pending {
+      border-left: 6px solid #f1c40f;
+    }
+
+    .petition-card h3 {
+      margin: 0 0 10px;
+    }
+
+    .petition-card span {
+      font-size: 14px;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .category {
+      font-weight: 600;
+      color: #333;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔥 Trending Petitions</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="pending.html">Pending</a>
+      <a href="create-p.html">Submit Petition</a>
+      <a href="login.html" id="logoutBtn">Logout</a>
+    </nav>
+  </header>
+
+  <div class="petition-section">
+    <!-- Petition 1 -->
+    <div class="petition-card pending">
+      <h3>Clean Dhaka City Campaign</h3>
+      <p>Join us in urging the city corporation to improve waste management and cleanliness.</p>
+      <span class="category">Category: Environment</span>
+    </div>
+
+    <!-- Petition 2 -->
+    <div class="petition-card pending">
+      <h3>Affordable Internet for Students</h3>
+      <p>Support better internet facilities for students in rural areas.</p>
+      <span class="category">Category: Education</span>
+    </div>
+
+    <!-- Petition 3 -->
+    <div class="petition-card pending">
+      <h3>Tree Plantation Week 2025</h3>
+      <p>Help us get government support for nationwide tree planting initiatives.</p>
+      <span class="category">Category: Environment</span>
+    </div>
+  </div>
+
+  <script>
+    // Logout functionality
+    document.getElementById("logoutBtn").addEventListener("click", function() {
+      localStorage.clear();
+      window.location.href = "login.html";
+    });
+  </script>
+
+</body>
+</html>

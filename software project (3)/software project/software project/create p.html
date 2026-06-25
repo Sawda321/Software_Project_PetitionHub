@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Petition | PetitionHub</title>
+  <link rel="stylesheet" href="css/create p.css">
+</head>
+<body>
+  <header>
+    <h1>Submit a Petition</h1>
+    <p>Fill in the details below and submit your petition.</p>
+    <nav>
+      <a href="index.html">🏠 Home</a>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    <section class="petition-form-section">
+      <form id="petitionForm">
+        <div class="input-group">
+          <label for="title">Petition Title:</label>
+          <input type="text" id="title" name="title" placeholder="Enter petition title" required>
+        </div>
+
+        <div class="input-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" rows="5" placeholder="Describe your petition" required></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="Environment">Environment</option>
+            <option value="Education">Education</option>
+            <option value="Health">Health</option>
+            <option value="Social">Social</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Your Email (optional):</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email">
+        </div>
+
+        <button type="submit" class="btn-submit">Submit Petition</button>
+      </form>
+    </section>
+
+    <section class="submitted-petitions">
+      <h2>Submitted Petitions</h2>
+      <ul id="petitionList">
+        <!-- Petitions submitted will appear here -->
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Check if user is logged in (optional)
+    if (!localStorage.getItem("isLoggedIn")) {
+      console.log("Not logged in. Redirect disabled for testing.");
+    }
+
+    const form = document.getElementById("petitionForm");
+    const petitionList = document.getElementById("petitionList");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById("title").value.trim();
+      const description = document.getElementById("description").value.trim();
+      const category = document.getElementById("category").value;
+      const email = document.getElementById("email").value.trim();
+
+      if (title && description && category) {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${title}</strong> [${category}]<br>${description}<br>${email ? "Submitted by: " + email : ""}`;
+        petitionList.appendChild(li);
+
+        form.reset();
+        alert("✅ Petition submitted successfully!");
+      } else {
+        alert("❌ Please fill in all required fields.");
+      }
+    });
+  </script>
+  <script src="firebase.js"></script>
+</body>
+</html>

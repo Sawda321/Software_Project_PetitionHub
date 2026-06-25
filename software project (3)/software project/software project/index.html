@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetitionHub | Digital Petition Platform</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f8f9fa; }
+    .navbar { background: #333; color: white; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    .navbar ul { list-style: none; display: flex; margin: 0; padding: 0; }
+    .navbar li { margin-left: 1rem; }
+    .navbar a { color: white; text-decoration: none; }
+    .navbar a.active { text-decoration: underline; }
+
+    .hero { background: #0066cc; color: white; text-align: center; padding: 4rem 1rem; }
+    .btn-primary { background: #ffcc00; color: #333; padding: 0.7rem 1.3rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
+
+    .section { padding: 2rem 1rem; }
+    .petition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .petition-card { background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .status { font-weight: bold; display: inline-block; margin-top: 0.5rem; }
+    .status.approved { color: green; }
+    .status.pending { color: orange; }
+    .status.rejected { color: red; }
+
+    .footer { background: #333; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1 class="logo">PetitionHub</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="trending.html">Trending</a></li>
+        <li><a href="create-p.html">Create Petition</a></li>
+        <li><a href="pending.html">Pending</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Signup</a></li>
+        <li><a href="admin-control.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Raise Your Voice, Make an Impact</h2>
+    <p>Join the movement. Create or support petitions for real change.</p>
+    <a href="create-p.html" class="btn-primary">Start a Petition</a>
+  </section>
+
+  <section id="trending" class="section">
+    <h3>Trending Petitions</h3>
+    <div class="petition-grid">
+      <div class="petition-card">
+        <h4>Reduce Plastic Waste</h4>
+        <p>Encourage local stores to adopt reusable packaging.</p>
+        <span class="status approved">Approved</span>
+      </div>
+      <div class="petition-card">
+        <h4>Increase Green Spaces</h4>
+        <p>Support new parks in urban areas for community well-being.</p>
+        <span class="status pending">Pending</span>
+      </div>
+      <div class="petition-card">
+        <h4>Improve Public Transport</h4>
+        <p>Petition for cleaner, more reliable buses and trains.</p>
+        <span class="status rejected">Rejected</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="categories" class="section">
+    <h3>Categories</h3>
+    <div class="petition-grid">
+      <div class="petition-card">
+        <h4>Environment</h4>
+        <p>Petitions related to climate, parks, and sustainability.</p>
+      </div>
+      <div class="petition-card">
+        <h4>Education</h4>
+        <p>Petitions for schools, colleges, and learning programs.</p>
+      </div>
+      <div class="petition-card">
+        <h4>Public Services</h4>
+        <p>Improve transportation, sanitation, and healthcare services.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 PetitionHub. Empowering digital democracy.</p>
+  </footer>
+  <script src="firebase.js"></script>
+</body>
+</html>

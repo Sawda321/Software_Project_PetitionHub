@@ -1,0 +1,63 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #4ca1af, #2c3e50);
+  color: #fff;
+  margin: 0;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+.petition-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.petition-card {
+  background: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.petition-card h3 {
+  margin: 0 0 10px;
+}
+
+.petition-card span {
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+}

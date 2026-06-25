@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | PetitionHub</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#f5f5f5; }
+    .navbar { background:#333; color:white; display:flex; justify-content:space-between; padding:1rem; }
+    .navbar a { color:white; text-decoration:none; margin-left:1rem; }
+    .dashboard { padding:2rem; }
+    h2 { margin-bottom:1rem; }
+    .petition-card { background:white; padding:1rem; margin-bottom:1rem; border-radius:5px; box-shadow:0 1px 5px rgba(0,0,0,0.1); }
+    .petition-card h4 { margin:0; }
+    .status { font-weight:bold; margin-right:1rem; }
+    .btn { padding:0.3rem 0.7rem; border:none; border-radius:4px; cursor:pointer; margin-right:0.5rem; }
+    .btn-approve { background:green; color:white; }
+    .btn-reject { background:red; color:white; }
+    .logout { cursor:pointer; }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <h1>Admin Dashboard</h1>
+    <div>
+      <a href="index.html" style="color:white; margin-right:1rem;">🏠 Home</a>
+      <span id="adminEmail"></span>
+      <a class="logout" id="logoutBtn">Logout</a>
+    </div>
+  </header>
+
+  <div class="dashboard">
+    <h2>All Petitions</h2>
+    <div id="petitionList"></div>
+  </div>
+
+  <script>
+    // Check if user is admin
+    const role = localStorage.getItem("userRole");
+    const email = localStorage.getItem("userEmail");
+
+    if (!role || role !== "admin") {
+      alert("Access denied! Admins only.");
+      window.location.href = "login.html";
+    }
+
+    document.getElementById("adminEmail").textContent = email || "admin@petitionhub.com";
+
+    const logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", () => {
+      localStorage.clear();
+      window.location.href = "login.html";
+    });
+
+    // Mock petitions data
+    let petitions = [
+      { title: "Reduce Plastic Waste", description: "Encourage local stores to adopt reusable packaging.", status: "Pending" },
+      { title: "Increase Green Spaces", description: "Support new parks in urban areas for community well-being.", status: "Pending" },
+      { title: "Improve Public Transport", description: "Petition for cleaner, more reliable buses and trains.", status: "Approved" }
+    ];
+
+    const petitionList = document.getElementById("petitionList");
+
+    function renderPetitions() {
+      petitionList.innerHTML = "";
+      petitions.forEach((p, index) => {
+        const card = document.createElement("div");
+        card.className = "petition-card";
+        card.innerHTML = `
+          <h4>${p.title}</h4>
+          <p>${p.description}</p>
+          <span class="status">${p.status}</span>
+          ${p.status === "Pending" ? `
+            <button class="btn btn-approve" onclick="updateStatus(${index}, 'Approved')">Approve</button>
+            <button class="btn btn-reject" onclick="updateStatus(${index}, 'Rejected')">Reject</button>
+          ` : ""}
+        `;
+        petitionList.appendChild(card);
+      });
+    }
+
+    function updateStatus(index, newStatus) {
+      petitions[index].status = newStatus;
+      renderPetitions();
+    }
+
+    renderPetitions();
+  </script>
+  <script src="firebase.js"></script>
+</body>
+</html>
